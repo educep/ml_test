@@ -6,6 +6,7 @@ the real `xgboost` library to about 1e-6.
 
 ```bash
 uv run python bank.py             # look at the data
+uv run python logistic.py         # the simple baseline: logistic regression (scikit-learn)
 uv run python toy_gbm.py          # the 16-line toy, readable version
 uv run python toy_xgb.py          # same skeleton, XGBoost math
 uv run python compare_xgboost.py  # toy_xgb vs the library, 6 configs
@@ -21,6 +22,7 @@ Setup after cloning: `uv sync && uv run pre-commit install`. Every commit then r
 | File | What it is |
 |---|---|
 | `bank.py` | Synthetic data: 500 customers, `income` (k EUR) and `missed` (missed payments), `y` = defaulted. Rows 0-399 train, 400-499 test. |
+| `logistic.py` | Logistic regression with scikit-learn: weights as odds ratios, `predict_proba` by hand, the same fit by Newton's method with XGBoost's g and h, L2 (`C`) vs XGBoost's lambda. 78/100 on test, a tie with `toy_gbm.py`. |
 | `toy_gbm.py` | Readable rewrite of the 16-line toy, same output. Squared-error gradient boosting, depth-2 trees, 200 trees, learning rate 0.01. |
 | `original/toy_gbm_16_lines.py` | The 16 lines exactly as transcribed, excluded from ruff. Run with `PYTHONPATH=. uv run python original/toy_gbm_16_lines.py`. |
 | `toy_xgb.py` | The same `grow()` + loop, with log-loss, gradients/hessians, lambda, gamma, min_child_weight, float32 thresholds. |
