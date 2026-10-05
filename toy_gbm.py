@@ -1,8 +1,7 @@
 """Gradient boosting in its simplest form: squared error, depth-2 trees.
 
-Readable rewrite of a 16-line toy (verbatim copy in original/toy_gbm_16_lines.py).
-Same algorithm, same output: the base rate, the first tree's leaf values, and
-the number of correct predictions on the 100 test customers.
+Readable rewrite of a 16-line toy. It prints the base rate, the first tree's
+leaf values, and the number of correct predictions on the 100 test customers.
 """
 
 import numpy as np

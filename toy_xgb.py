@@ -41,6 +41,8 @@ def best_split(rows, g, h, lam, min_child):
 
     Gain is on the library's scale: 2x Eq. (7), before subtracting gamma.
     """
+    if len(rows) < 2:  # one row cannot be split (reachable with min_child=0)
+        return None
     G, H = g[rows].sum(), h[rows].sum()
     best = None
     best_gain = 0.0  # a split must improve the objective at all
