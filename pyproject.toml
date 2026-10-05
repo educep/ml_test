@@ -1,0 +1,24 @@
+[project]
+name = "ml-test"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.3",
+    "xgboost>=3.4.1",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.2",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["original"]  # verbatim transcription, kept as-is on purpose
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, bugbear, pyupgrade, simplify, numpy-specific.
+# No pep8-naming: X for the feature matrix is the ML convention.
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "NPY"]
